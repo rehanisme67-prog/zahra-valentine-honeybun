@@ -1,18 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffcccb; }
-        h1 { color: #ff69b4; }
-        .heart { font-size: 50px; color: red; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love Zahra ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<style>
+body {
+margin:0;
+font-family:'Poppins', sans-serif;
+background:linear-gradient(135deg,#fff0f5,#ffe4e1);
+text-align:center;
+overflow-x:hidden;
+}
+
+/* Header */
+h1{
+font-family:'Great Vibes',cursive;
+font-size:60px;
+color:#b22222;
+margin-top:40px;
+}
+
+/* Love Letter */
+.letter{
+width:80%;
+margin:auto;ackground:url("https://www.transparenttextures.com/patterns/aged-paper.png");
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+animation:fadeIn 2s;
+}
+
+.poem{
+font-size:20px;
+min-height:120px;
+margin:20px;
+}
+
+/* Buttons */
+button{
+background:#b22222;
+border:none;
+color:white;
+padding:14px 25px;
+margin:10px;
+font-size:16px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#8b0000;
+}
+
+/* Gallery */
+.gallery{
+margin-top:40px;
+}
+
+.gallery img{
+width:80%;
+max-width:300px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Countdown */
+.timer{
+font-size:22px;
+margin:20px;
+color:#8b0000;
+}
+
+/* Popup */
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+z-index:100;
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+font-size:25px;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;}
+}
+
+.signature{
+font-family:'Great Vibes',cursive;
+font-size:30px;
+margin-top:40px;
+}
+
+</style>
 </head>
+
 <body>
-    <h1>Happy Valentine's Day!</h1>
-    <div class="heart">❤️</div>
-    <p>Celebrate love and friendship this Valentine's Day!</p>
+
+<h1>For My Beautiful Zahra ❤️</h1>
+
+<div class="letter">
+
+<p class="poem" id="poem">
+Click below and let my heart speak…
+</p>
+
+<button onclick="newPoem()">💌 Generate Love Poem</button>
+<button onclick="openLetter()">📜 Open Secret Letter</button>
+<button onclick="askValentine()">💘 Be My Valentine</button>
+
+</div>
+
+<!-- Countdown -->
+<div class="timer" id="timer"></div>
+
+<!-- Gallery -->
+<div class="gallery">
+<h2>Our Memories 📸</h2>
+<img src="https://via.placeholder.com/300x400">
+<p>(Replace with your photos later)</p>
+</div>
+
+<p class="signature">Forever Yours, Rehan</p>
+
+<!-- Popup -->
+<div class="popup" id="popup"></div>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9d4c49.mp3">
+</audio>
+
+<script>
+
+/* Poems */
+const poems=[
+"Zahra, every heartbeat of mine whispers your name.",
+"You are my dua that Allah answered with love.",
+"In your smile I found my forever home.",
+"If stars could speak, they would tell our story.",
+"You are the calm to my chaos, the love of my life."
+];
+
+function newPoem(){
+document.getElementById("poem").innerText=
+poems[Math.floor(Math.random()*poems.length)];
+}
+
+/* Secret Letter */
+function openLetter(){
+document.getElementById("popup").style.display="block";
+document.getElementById("popup").innerHTML=
+`<h2>My Love Zahra ❤️</h2>
+<p>
+From the moment you entered my life,
+you changed every meaning of happiness.
+
+Every dream I have includes you.
+Every prayer I make includes your name.
+
+You are not just my love...
+You are my peace, my blessing, my forever.
+
+Will you continue this beautiful journey with me?
+</p>
+<button onclick="closePopup()">Close 💕</button>
+`;
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
+/* Valentine Proposal */
+function askValentine(){
+document.getElementById("popup").style.display="block";
+document.getElementById("popup").innerHTML=
+`<h2>Will You Be My Valentine? 💘</h2>
+<button onclick="yesLove()">YES ❤️</button>
+<button onclick="noLove()">NO 😭</button>
+`;
+}
+
+function yesLove(){
+document.getElementById("popup").innerHTML=
+`<h2>You Made Me The Happiest Man Alive ❤️</h2>
+<button onclick="whatsapp()">Tell Rehan 💌</button>
+`;
+confetti();
+}
+
+function noLove(){
+document.getElementById("popup").innerHTML=
+"<h2>I'll keep loving you anyway 😌❤️</h2>";
+}
+
+/* WhatsApp */
+function whatsapp(){
+window.open("https://wa.me/?text=YES I will be your Valentine ❤️");
+}
+
+/* Countdown Timer */
+const valentine=new Date("Feb 14, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+let now=new Date().getTime();
+let distance=valentine-now;
+
+let days=Math.floor(distance/(1000*60*60*24));
+let hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+let mins=Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("timer").innerHTML=
+"Countdown to Valentine's Day ❤️ "+days+"d "+hours+"h "+mins+"m";
+
+},1000);
+
+/* Floating Hearts */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.className="heart";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),5000);
+},600);
+
+/* Confetti */
+function confetti(){
+for(let i=0;i<50;i++){
+let conf=document.createElement("div");
+conf.innerHTML="💖";
+conf.className="heart";
+conf.style.left=Math.random()*100+"vw";
+document.body.appendChild(conf);
+setTimeout(()=>conf.remove(),4000);
+}
+}
+
+</script>
+
 </body>
 </html>
